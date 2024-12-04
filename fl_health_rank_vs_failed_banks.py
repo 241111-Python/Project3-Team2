@@ -1,14 +1,14 @@
 import pandas as pd
 from datetime import datetime
 
-flHealth = pd.read_csv("maybeData\County_Health_Rankings.csv")
-banks = pd.read_csv(r"maybeData\failed_banklist.csv")
+flHealth = pd.read_csv("maybeData\County_Health_Rankings.csv", usecols=['County', 'Measure name', 'Raw value', 'Year span'])
+banks = pd.read_csv(r"maybeData\failed_banklist.csv", usecols=['State', 'Closing Date'])
 
-# dropping unneeded columns/rows
-banks.drop(["Cert", "Fund"], axis=1, inplace=True)
-flHealth.drop(["State code", "County code", "Measure id", "Confidence Interval Lower Bound","Confidence Interval Upper Bound","Data Release Year","fipscode"],axis=1, inplace=True)
+#filter data to be Florida specific, then drop unneeded columns/rows
 flHealth = flHealth.query('County == "Florida"')
 banks = banks.query('State == "FL"')
+flHealth.drop('County', axis=1, inplace=True)
+banks.drop('State', axis=1, inplace=True)
 flHealth.dropna(inplace=True)
 banks.dropna(inplace=True)
 
@@ -22,6 +22,7 @@ banks.loc[banks["Year"].str.len() == 1, "Year"] = "0" + banks["Year"].str.slice(
 banks["Year"] = "20" + banks['Year'].str.slice()
 banks.sort_values('Year', inplace=True)
 
+# The query method gets a little funky when given a two word variable, so we change this to be one word
 flHealth.rename(columns={"Measure name":"Measure_name"}, inplace=True)
 
 
@@ -36,13 +37,12 @@ std = merged.query("Measure_name == 'Sexually transmitted infections'")
 inact = merged.query("Measure_name == 'Physical inactivity'")
 obs = merged.query("Measure_name == 'Adult obesity'")
 
-# dropping non number columns
-vCrime.drop(["State","County","Measure_name","Numerator","Denominator"],axis=1, inplace=True)
-unem.drop(["State","County","Measure_name","Numerator","Denominator"],axis=1, inplace=True)
-unin.drop(["State","County","Measure_name","Numerator","Denominator"],axis=1, inplace=True)
-std.drop(["State","County","Measure_name","Numerator","Denominator"],axis=1, inplace=True)
-inact.drop(["State","County","Measure_name","Numerator","Denominator"],axis=1, inplace=True)
-obs.drop(["State","County","Measure_name","Numerator","Denominator"],axis=1, inplace=True)
+vCrime.drop(["Measure_name"],axis=1, inplace=True)
+unem.drop(["Measure_name"],axis=1, inplace=True)
+unin.drop(["Measure_name"],axis=1, inplace=True)
+std.drop(["Measure_name"],axis=1, inplace=True)
+inact.drop(["Measure_name"],axis=1, inplace=True)
+obs.drop(["Measure_name"],axis=1, inplace=True)
 
 # no fancy heat map because it is 10:30 pm and I am sleepy
 print("\nViolent crime")
