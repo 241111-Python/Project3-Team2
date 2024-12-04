@@ -1,5 +1,4 @@
 import pandas as pd
-from datetime import datetime
 
 flHealth = pd.read_csv("maybeData\County_Health_Rankings.csv", usecols=['County', 'Measure name', 'Raw value', 'Year span'])
 banks = pd.read_csv(r"maybeData\failed_banklist.csv", usecols=['State', 'Closing Date'])
