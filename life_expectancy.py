@@ -42,5 +42,6 @@ plt.clf()
 
 plt.scatter(df['Alcohol_consumption'], df['Schooling'])
 plt.title('Alcohol consumption vs Schooling')
-plt.xlabel('')
+plt.xlabel('Alcohol Consumption')
+plt.ylabel('Schooling')
 plt.savefig('alcohol-schooling.png', bbox_inches='tight')
