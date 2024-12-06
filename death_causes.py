@@ -16,6 +16,7 @@ grouped_deaths_df = df.groupby('Country').mean().reset_index()
 
 population_df.rename(columns={'Country/Territory': 'Country'}, inplace=True)
 pop_df = population_df[['Country','2020 Population', '2010 Population', '2000 Population', '1990 Population']]
+pop_df = pop_df.copy()
 pop_df['Avg_Population'] = pop_df[['2020 Population', '2010 Population', '2000 Population', '1990 Population']].mean(axis=1)
 
 merged_df = pd.merge(grouped_deaths_df, pop_df[['Country', 'Avg_Population']], on='Country', how='left')
