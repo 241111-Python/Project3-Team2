@@ -32,7 +32,7 @@ print(countries_pop_df.sort_values(by='2020 Population', ascending=False).head()
 
 
 combined_df = grouped_deaths_df.merge(countries_pop_df, on='Country')
-combined_df['Deaths per 100k'] = (combined_df['Chronic Respiratory Diseases'] / combined_df['2020 Population']) * 100000
+combined_df['Deaths per 100k'] = (combined_df['Chronic Respiratory Diseases'] / combined_df['Avg_Population']) * 100000
 combined_df = combined_df[['Country', 'Deaths per 100k']]
 print(combined_df.sort_values(by='Deaths per 100k', ascending=False).head())
 
