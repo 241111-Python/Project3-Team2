@@ -1,0 +1,61 @@
+The purpose of this document is to guide collaborators in creating a merge-request that will be approved. 
+Contributors are intended to perform some statistical analysis on a dataset using a new branch. That branch will then
+be integrated into main branch.
+
+The file structure of your branch should be as follows. 
+
+root/
+├── analyses/
+│   ├── char1_char2.py
+│   ├── char3_char4.py
+│   ├── char5_char6.py
+│   └── ...
+├── graphs/
+│   ├── char1_char2-plot.png
+│   ├── char3_char4-scatter.png
+│   ├── dataset1_heatmap.png
+│   └── ...
+├── shared/
+│   ├── utils/
+│   │   └── data_processor.py
+|   |   └── ...
+│   └── config/
+│   |   └── requirements.txt
+|   |   └── ...
+└── README.md
+
+That means that in each of your branches, you need to locate your python script for running your analyses inside a folder called analyses. 
+Simiarly for your graphs, and any other files you used, should be located in the appropriate folders. 
+You will likely need to update your imports and any automatically generated outputs. 
+
+analyses:
+
+    Please name your files according to the characteristics they are comparing. If you are running an alaysis over an entire data set instead
+    of two characteristics, name it after the dataset. For example, if your dataset if labeled 'Renewable_energy.csv', then label your file 'renewable_energy.py'.
+    If you are comparing char1 to char2, then label the file char1-char2.py.
+
+graphs:
+
+    For your graphs, please output them as .png. For labeling, follow the convention above:
+
+        char1_char2_type.png
+        dataset_type.png
+
+    where type is the type of graph.
+
+shared:
+    utils:
+
+        If you used any standalone scripts to help you process data, locate them here. Label them appropriately. For instance, if you had a script
+        that converted coordinates to countries or a dataset called 'meteorites', you might label it
+
+            meteorites_coordinates_to_countries.py
+
+    config:
+
+        This folder will contain the requirements.txt file for generating a virtual environment in which all analyses can be run. You don't need to touch this unless you used a non-standard package. 
+        In that case, make sure that the current packages listed are a subset of the ones you need. 
+
+Once you have finished structuring your branch in the appropriate way, make a pull request and I'll approve it (or reject it... muahahaha!). 
+
+If you want an example, check out the sample branch that I made, appropriately called sample. 
