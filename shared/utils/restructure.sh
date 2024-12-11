@@ -48,7 +48,6 @@ move_python_files() {
     done
 }
 
-cd ../../
 
 create_structure
 remove_pngs
