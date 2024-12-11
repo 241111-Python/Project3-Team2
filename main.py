@@ -72,7 +72,7 @@ if __name__ == '__main__':
             confirm = input(f"Run {selected_option}? (y/n): ").strip().lower()
             if confirm == 'y':
                 try:
-                    subprocess.run([sys.executable, selected_option])
+                    subprocess.run([sys.executable, 'analyses/' + selected_option])
                 except FileNotFoundError:
                     print(f"Error: File {selected_option} not found.")
                 break
