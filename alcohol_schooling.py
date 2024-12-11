@@ -36,7 +36,7 @@ plt.xlabel('GDP per capita')
 plt.title('Schooling vs Alcohol Consumption over GDP per Capita')
 
 plt.legend()
-plt.savefig('alcohol-schooling-vs-gdp.png', bbox_inches='tight')
+plt.savefig('graphs/alcohol_schooling_gdp_scatter.png', bbox_inches='tight')
 
 plt.clf()
 
@@ -44,4 +44,4 @@ plt.scatter(df['Alcohol_consumption'], df['Schooling'])
 plt.title('Alcohol consumption vs Schooling')
 plt.xlabel('Alcohol Consumption')
 plt.ylabel('Schooling')
-plt.savefig('alcohol-schooling.png', bbox_inches='tight')
+plt.savefig('graphs/alcohol_schooling_scatter.png', bbox_inches='tight')
