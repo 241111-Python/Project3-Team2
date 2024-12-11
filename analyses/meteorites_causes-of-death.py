@@ -35,4 +35,4 @@ causes_meteors = pd.merge(group, death_causes_df, 'inner', 'GeoLocation')
 
 sb.heatmap(causes_meteors.corr(numeric_only=True))
 print(causes_meteors.corr(numeric_only=True))
-plt.savefig('meteor-cause-corr.png')
+plt.savefig(r'graphs\meteorites_cause-of-death_heatmap.png')

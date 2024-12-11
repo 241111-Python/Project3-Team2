@@ -43,5 +43,5 @@ corr = merged.corr(numeric_only=True)
 
 sb.heatmap(corr, annot=True)
 plt.title("Correlation")
-plt.savefig('powerball-firearm.png')
+plt.savefig(r'graphs\powerball_firearm_heatmap.png')
 plt.show()
