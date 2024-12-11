@@ -38,7 +38,7 @@ correlation_matrix = merged_df.corr()
 plt.figure(figsize=(8, 6))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
 plt.title('Correlation Heatmap')
-plt.savefig('graphs/diabetes-stroke.png', bbox_inches='tight')
+plt.savefig('graphs/diabetes_stroke.png', bbox_inches='tight')
 plt.close()
 
 
