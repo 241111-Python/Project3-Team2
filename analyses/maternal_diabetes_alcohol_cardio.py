@@ -34,16 +34,15 @@ plt.clf()
 plt.scatter(years, maternal_normalized, label="maternal deaths")
 plt.scatter(years, diabetes_normalized, label="diabetes deaths")
 plt.legend()
-
-plt.savefig('maternal_diabetes_year.png')
+plt.savefig('graphs/maternal_diabetes_year.png')
 plt.clf()
 
 plt.scatter(maternal_normalized, diabetes_normalized)
-plt.savefig('maternal_diabetes.png')
+plt.savefig('graphs/maternal_diabetes.png')
 plt.clf()
 
 sns.heatmap(df.corr())
 plt.title("Heatmap of Causes of Deaths Over Years", fontsize=16)
-plt.savefig('cause_of_death_heatmap.png', bbox_inches='tight')
+plt.savefig('graphs/cause_of_death_heatmap.png', bbox_inches='tight')
 plt.clf()
 
