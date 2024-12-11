@@ -1,7 +1,10 @@
 import os
+from pathlib import Path
 import subprocess
 import sys
 import keyboard  # For real-time input handling
+
+ANALYSES_FILEPATH = './analyses/'
 
 def print_menu_options(data: list, current_input: str) -> None:
     print("\033c", end="")  # Clear the console
@@ -37,8 +40,20 @@ def real_time_input(options: list):
         print("\nProgram interrupted by user.")
         sys.exit(0)
 
+def get_file_names() -> list[str]:
+    analyses_path = Path(ANALYSES_FILEPATH)
+    return [f.as_posix() for f in analyses_path.iterdir() if f.is_file()]
+
+def format_filename(filename: str) -> str:
+    return filename.split("/")[-1].replace(".py", "").replace("_", " vs ")
+
+def get_menu_options() -> list[str]:
+    return [format_filename(filename) for filename in get_file_names()]
+
+
 if __name__ == '__main__':
-    options = ['alcohol_schooling.py', 'diabetes_stroke.py', 'egg_demoindex.py']
+    options = get_menu_options()
+    # options = ['alcohol_schooling.py', 'diabetes_stroke.py', 'egg_demoindex.py']
     print_menu_options(options, "")
 
     while True:
