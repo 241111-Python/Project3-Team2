@@ -1,5 +1,4 @@
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
 
 pfizer_df = pd.read_csv("maybeData/Pfizer_stock.csv", usecols=['Date', 'Close'])
@@ -30,7 +29,7 @@ merged_df = merged_df.merge(grouped_weather_df, on='Date', how='inner')
 
 merged_df['Normalized'] = (merged_df['Close'] / merged_df['SP500']) * 100
 merged_df['Date'] = merged_df['Date'].dt.to_timestamp()
-print(merged_df)
+#print(merged_df)
 
 filtered_df = merged_df[merged_df['Date'] > '2018-01-01']
 
@@ -38,13 +37,13 @@ fig, ax1 = plt.subplots(figsize=(10, 6))
 #ax1.plot(filtered_df['Date'], filtered_df['Monthly Average Temperature'], label='Avg Temperature', color='tab:red')
 ax1.plot(filtered_df['Date'], filtered_df['Monthly Total Precepitation'], label='Precipitation', color='tab:blue')
 ax1.set_xlabel('Date', fontsize=12)
-ax1.set_ylabel('Precipitation', fontsize=12)
+ax1.set_ylabel('Monthly Total Precipitation', fontsize=12)
 ax2 = ax1.twinx()
-ax2.plot(filtered_df['Date'], filtered_df['Normalized'], label='Normalized Pfizer Close', color='tab:green')
-ax2.set_ylabel('Normalized Pfizer Close', fontsize=12)
-plt.title('Monthly Data: Temperature, Precipitation, and Normalized Pfizer Close (After 2020)', fontsize=14)
+ax2.plot(filtered_df['Date'], filtered_df['Normalized'], label='Pfizer Price', color='tab:green')
+ax2.set_ylabel('Normalized Pfizer Closing Stock Price', fontsize=12)
+plt.title('Monthly Precipitation and Pfizer Closing Price', fontsize=14)
 plt.xticks(rotation=45)
 ax1.legend(loc='upper left')
 ax2.legend(loc='upper right')
 plt.tight_layout()
-plt.show()
+plt.savefig("./graphs/pfizer_precipitation_line.png")
