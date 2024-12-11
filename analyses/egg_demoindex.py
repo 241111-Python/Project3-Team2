@@ -17,7 +17,7 @@ plt.xticks(eggs['date'][::60], rotation=45)
 plt.xlabel("date")
 plt.ylabel("Average price (USD)")
 plt.tight_layout()
-plt.savefig('./plots/egg-prices.png')
+plt.savefig('./graphs/eggPrice_time.png')
 plt.clf()
 
 ###########################################################################
@@ -54,7 +54,7 @@ ax2.tick_params(axis='y', labelcolor='green')
 # Add a title and layout adjustment
 plt.title('Price and Democracy Score by Year')
 fig.tight_layout()  # Adjust layout to prevent overlap
-plt.savefig("./plots/dem-eggs.png")
+plt.savefig("./graphs/eggPrice_demoindex.png")
 
 print(eggs_dem.corr())
 
