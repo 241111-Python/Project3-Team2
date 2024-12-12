@@ -1,4 +1,9 @@
-# jesper's analysis program 
+"""
+Analysis program written by Jesper 
+links to data: 
+https://www.kaggle.com/datasets/justinwilcher/nasa-neoclose-approaches-1960-2060
+https://www.kaggle.com/datasets/malaiarasugraj/global-health-statistics
+"""
 import pandas as pd
 import matplotlib.pyplot as plt 
 import numpy as np

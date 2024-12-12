@@ -33,12 +33,22 @@ df = pd.merge(dem_usa, merged_df, how='inner', on='year')
 df['year'] = df['year'].dt.start_time
 print(df)
 
-plt.figure(figsize=(10, 6))
-plt.plot(df['year'], df['score'], color='orange', label="Democracy Index")
-plt.plot(df['year'], df['Normalized'], color='blue', label="Normalized Pfizer Stock Price")
+print(df.corr())
 
-plt.xlabel('Year')
-plt.ylabel('Index Value')
+fix, ax1 = plt.subplots()
+
+# plt.figure(figsize=(10, 6))
+ax1.plot(df['year'], df['score'], color='orange', label="Democracy Index", marker='x')
+ax1.set_xlabel('Time (years)')
+ax1.set_ylabel('Democracy Index', color='black')
+
+ax2 = ax1.twinx()
+ax2.plot(df['year'], df['Normalized'], color='blue', label="Normalized Pfizer Stock Price", marker='o')
+ax2.set_ylabel('Normalized Stock Price', color='black')
+
+lines1, labels1 = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+plt.legend(lines1 + lines2, labels1 + labels2, loc='upper left')
+
 plt.title('Demoracy Index over Time')
-plt.legend()
 plt.savefig("./graphs/pfizer_demindex.png")

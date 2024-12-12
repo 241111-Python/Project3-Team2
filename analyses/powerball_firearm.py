@@ -41,7 +41,7 @@ merged["Odd count"] = oddCount(merged['Winning Numbers'])
 
 corr = merged.corr(numeric_only=True)
 
-sb.heatmap(corr, annot=True)
+sb.heatmap(corr, annot=True, cmap='coolwarm')
 plt.title("Correlation")
 plt.savefig(r'graphs\powerball_firearm_heatmap.png')
 plt.show()

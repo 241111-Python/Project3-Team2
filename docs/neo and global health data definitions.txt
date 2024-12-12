@@ -1,4 +1,4 @@
-i want to use python pandas to find correlations using the following two data sets: 
+
 dataset 1: NASA NEO/Close Approaches 1960-2060
 Column Descriptions
 des:
@@ -72,5 +72,3 @@ Improvement in 5 Years (%): The improvement in disease outcomes over the last fi
 Per Capita Income (USD): The average income per person in the country.
 Education Index: The average level of education in the country.
 Urbanization Rate (%): The percentage of the population living in urban areas.
-
-how should i join these tables and perform correlations? 

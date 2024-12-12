@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime
+import matplotlib.ticker as ticker
+
 
 print("Running pandas version", pd.__version__)
 print(datetime.now())
@@ -40,20 +42,28 @@ print(eggs_dem.head())
 fig, ax1 = plt.subplots()
 
 # Plot 'price' on the primary y-axis
-ax1.plot(eggs_dem['year'], eggs_dem['price'], color='blue', marker='o', label='Price')
-ax1.set_xlabel('Year')
-ax1.set_ylabel('Price', color='blue')
-ax1.tick_params(axis='y', labelcolor='blue')
+ax1.plot(eggs_dem['year'], eggs_dem['price'], color='blue', marker='o', label='Price (USD)')
+ax1.set_xlabel('Time (years)')
+ax1.set_ylabel('Egg Price (USD)', color='black')
+ax1.tick_params(axis='y', labelcolor='black')
 
 # Create a twin y-axis for 'Democracy score'
 ax2 = ax1.twinx()
-ax2.plot(eggs_dem['year'], eggs_dem['score'], color='green', marker='x', label='Democracy Score')
-ax2.set_ylabel('Score', color='green')
-ax2.tick_params(axis='y', labelcolor='green')
+ax2.plot(eggs_dem['year'], eggs_dem['score'], color='orange', marker='x', label='Democracy Index')
+ax2.set_ylabel('Democracy Index', color='black')
+ax2.tick_params(axis='y', labelcolor='black')
 
 # Add a title and layout adjustment
-plt.title('Price and Democracy Score by Year')
+plt.title('Egg Price vs Democracy Index (US) over Time')
 fig.tight_layout()  # Adjust layout to prevent overlap
+
+lines1, labels1 = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+plt.legend(lines1 + lines2, labels1 + labels2, loc='upper left')
+
+ax1.xaxis.set_major_locator(ticker.MaxNLocator(integer=True))
+
+
 plt.savefig("./graphs/eggPrice_demoindex.png")
 
 print(eggs_dem.corr())
