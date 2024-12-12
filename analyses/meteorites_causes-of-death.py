@@ -31,8 +31,15 @@ death_causes_df['GeoLocation'] = merged_df['GeoLocation']
 group = meteors.groupby('GeoLocation').count().rename(columns={'year': 'Meteors'})
 causes_meteors = pd.merge(group, death_causes_df, 'inner', 'GeoLocation')
 
+cor = causes_meteors.drop(columns='GeoLocation').corrwith(causes_meteors['Meteors'])
 
-
-sb.heatmap(causes_meteors.corr(numeric_only=True))
-print(causes_meteors.corr(numeric_only=True))
-plt.savefig(r'graphs\meteorites_cause-of-death_heatmap.png')
+cor.drop(index='Meteors', inplace=True)
+cor.rename(index={"Alzheimer's Disease and Other Dementias":"Alzheimer's Disease", "Cirrhosis and Other Chronic Liver Diseases":"Liver Diseases"},inplace=True)
+print(cor)
+colors = ['blue' if corr < 0 else 'red' for corr in cor]
+plt.figure(figsize=(10,6))
+plt.subplots_adjust(bottom=.4)
+sb.barplot(x=cor.index, y=cor.values, palette=colors)
+plt.xticks(rotation=45, ha="right",)
+plt.show()
+plt.savefig(r'graphs\meteorites_cause-of-death_barplot.png')
