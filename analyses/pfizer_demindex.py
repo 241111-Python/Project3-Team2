@@ -29,7 +29,7 @@ dem_usa['year'] = pd.to_datetime(dem_usa['year'], format='%Y').dt.to_period('Y')
 print(dem_usa.head())
 print(merged_df.head())
 
-df = pd.merge(dem_usa, merged_df, how='outer', on='year')
+df = pd.merge(dem_usa, merged_df, how='inner', on='year')
 df['year'] = df['year'].dt.start_time
 print(df)
 
@@ -39,4 +39,4 @@ plt.plot(df['year'], df['Normalized'], color='blue')
 
 plt.xlabel('Year')
 plt.ylabel('Index Score')
-plt.savefig("./graphs/prizer_demindex.png")
+plt.savefig("./graphs/pfizer_demindex.png")
