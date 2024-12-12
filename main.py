@@ -47,11 +47,15 @@ def get_file_names() -> list[str]:
 def format_filename(filename: str) -> str:
     return filename.split("/")[-1].replace(".py", "").replace("_", " vs ")
 
+def get_menu_options_dict() -> dict:
+    return {format_filename(filename): filename for filename in get_file_names()}
+
 def get_menu_options() -> list[str]:
-    return [format_filename(filename) for filename in get_file_names()]
+    return get_menu_options_dict().keys()
 
 
 if __name__ == '__main__':
+    options_dict = get_menu_options_dict()
     options = get_menu_options()
     # options = ['alcohol_schooling.py', 'diabetes_stroke.py', 'egg_demoindex.py']
     print_menu_options(options, "")
@@ -72,9 +76,11 @@ if __name__ == '__main__':
             confirm = input(f"Run {selected_option}? (y/n): ").strip().lower()
             if confirm == 'y':
                 try:
-                    subprocess.run([sys.executable, 'analyses/' + selected_option])
+                    # analysespath = os.path.join(options_dict[selected_option])
+                    subprocess.run([sys.executable, options_dict[selected_option]])
+                    # subprocess.run([sys.executable, 'analyses/' + options_dict[selected_option]])
                 except FileNotFoundError:
-                    print(f"Error: File {selected_option} not found.")
+                    print(f"Error: File {options_dict[selected_option]} not found.")
                 break
             else:
                 print("Cancelled. Restarting selection...")
