@@ -1,4 +1,9 @@
-# jesper's analysis program 
+"""
+Analysis program written by Jesper 
+links to data: 
+https://www.kaggle.com/datasets/fernandogarciah24/top-1000-imdb-dataset
+https://www.kaggle.com/datasets/harios/box-office-data-1984-to-2024-from-boxofficemojo
+"""
 import pandas as pd
 import matplotlib.pyplot as plt 
 import numpy as np
