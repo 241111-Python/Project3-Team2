@@ -1,0 +1,76 @@
+i want to use python pandas to find correlations using the following two data sets: 
+dataset 1: NASA NEO/Close Approaches 1960-2060
+Column Descriptions
+des:
+The designation or identifier of the Near-Earth Object (NEO). This is usually an alphanumeric code that uniquely identifies the object.
+Example: 2018 AM12 (a specific asteroid discovered in 2018).
+
+orbit_id
+The unique identifier for the NEO's specific orbital configuration during the close approach.
+Example: 22(indicating the 22nd observation or refinement of this object's orbit).
+
+jd:
+The Julian Date of the close approach, a continuous count of days used in astronomy for precise timekeeping.
+Example: 2436943.5 (equivalent to January 9, 1960, 14:30 UTC).
+
+cd:
+The calendar date and time of the close approach, given in Coordinated Universal Time (UTC).
+Example: 1960-Jan-09 14:30 (indicating the NEO's closest approach occurred on January 9, 1960, at 14:30 UTC).
+
+dist:
+The nominal (most likely) distance between the NEO and Earth during the close approach, measured in astronomical units (AU).
+Example: 0.028528 AU (~4.27 million kilometers or ~2.65 million miles).
+
+dist_min:
+The minimum possible distance, accounting for uncertainties in the NEO's trajectory.
+Example: 0.027375 AU (~4.10 million kilometers or ~2.55 million miles).
+
+dist_max:
+The maximum possible distance, considering uncertainties in the object's orbit.
+Example: 0.029682 AU (~4.44 million kilometers or ~2.76 million miles).
+
+v_rel:
+The velocity of the NEO relative to Earth during the close approach, measured in kilometers per second (km/s).
+Example: 11.381602 km/s (~40,973 km/h or ~25,461 mph).
+
+v_inf:
+The "infinity velocity," or the object's velocity relative to Earth if Earth’s gravitational influence were not present, measured in km/s.
+Example: 11.373393 km/s (~40,944 km/h or ~25,441 mph).
+
+t_sigma_f:
+The uncertainty in the timing of the close approach, often represented as a formatted string.
+Example: <00:01 (indicating the approach time is accurate to within less than 1 minute).
+
+h:
+The absolute magnitude of the NEO, representing its brightness. Smaller values typically indicate brighter objects.
+Example: 21.16 (indicating a relatively small and/or dim asteroid).
+
+fullname:
+The full name or detailed designation of the NEO, including its provisional or alternative identifiers.
+
+dataset 2: Global Health Statistics
+Column Descriptions
+Country: The name of the country where the health data was recorded.
+Year: The year in which the data was collected.
+Disease Name: The name of the disease or health condition tracked.
+Disease Category: The category of the disease (e.g., Infectious, Non-Communicable).
+Prevalence Rate (%): The percentage of the population affected by the disease.
+Incidence Rate (%): The percentage of new or newly diagnosed cases.
+Mortality Rate (%): The percentage of the affected population that dies from the disease.
+Age Group: The age range most affected by the disease.
+Gender: The gender(s) affected by the disease (Male, Female, Both).
+Population Affected: The total number of individuals affected by the disease.
+Healthcare Access (%): The percentage of the population with access to healthcare.
+Doctors per 1000: The number of doctors per 1000 people.
+Hospital Beds per 1000: The number of hospital beds available per 1000 people.
+Treatment Type: The primary treatment method for the disease (e.g., Medication, Surgery).
+Average Treatment Cost (USD): The average cost of treating the disease in USD.
+Availability of Vaccines/Treatment: Whether vaccines or treatments are available.
+Recovery Rate (%): The percentage of people who recover from the disease.
+DALYs: Disability-Adjusted Life Years, a measure of disease burden.
+Improvement in 5 Years (%): The improvement in disease outcomes over the last five years.
+Per Capita Income (USD): The average income per person in the country.
+Education Index: The average level of education in the country.
+Urbanization Rate (%): The percentage of the population living in urban areas.
+
+how should i join these tables and perform correlations? 

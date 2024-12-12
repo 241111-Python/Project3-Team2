@@ -1,0 +1,74 @@
+dataset 1: NASA NEO/Close Approaches 1960-2060
+Column Descriptions
+des:
+The designation or identifier of the Near-Earth Object (NEO). This is usually an alphanumeric code that uniquely identifies the object.
+Example: 2018 AM12 (a specific asteroid discovered in 2018).
+
+orbit_id
+The unique identifier for the NEO's specific orbital configuration during the close approach.
+Example: 22(indicating the 22nd observation or refinement of this object's orbit).
+
+jd:
+The Julian Date of the close approach, a continuous count of days used in astronomy for precise timekeeping.
+Example: 2436943.5 (equivalent to January 9, 1960, 14:30 UTC).
+
+cd:
+The calendar date and time of the close approach, given in Coordinated Universal Time (UTC).
+Example: 1960-Jan-09 14:30 (indicating the NEO's closest approach occurred on January 9, 1960, at 14:30 UTC).
+
+dist:
+The nominal (most likely) distance between the NEO and Earth during the close approach, measured in astronomical units (AU).
+Example: 0.028528 AU (~4.27 million kilometers or ~2.65 million miles).
+
+dist_min:
+The minimum possible distance, accounting for uncertainties in the NEO's trajectory.
+Example: 0.027375 AU (~4.10 million kilometers or ~2.55 million miles).
+
+dist_max:
+The maximum possible distance, considering uncertainties in the object's orbit.
+Example: 0.029682 AU (~4.44 million kilometers or ~2.76 million miles).
+
+v_rel:
+The velocity of the NEO relative to Earth during the close approach, measured in kilometers per second (km/s).
+Example: 11.381602 km/s (~40,973 km/h or ~25,461 mph).
+
+v_inf:
+The "infinity velocity," or the object's velocity relative to Earth if Earth’s gravitational influence were not present, measured in km/s.
+Example: 11.373393 km/s (~40,944 km/h or ~25,441 mph).
+
+t_sigma_f:
+The uncertainty in the timing of the close approach, often represented as a formatted string.
+Example: <00:01 (indicating the approach time is accurate to within less than 1 minute).
+
+h:
+The absolute magnitude of the NEO, representing its brightness. Smaller values typically indicate brighter objects.
+Example: 21.16 (indicating a relatively small and/or dim asteroid).
+
+fullname:
+The full name or detailed designation of the NEO, including its provisional or alternative identifiers.
+
+
+
+dataset 2: Cellular Network Analysis Dataset
+Timestamp: The timestamps represent the time at which the signal metrics were recorded, with a 10-minute interval between each timestamp.
+
+Latitude and Longitude: The latitude and longitude coordinates indicate the location of the measurement in Bihar. The dataset covers 20 specified localities in Bihar, including Kankarbagh, Rajendra Nagar, Boring Road, Ashok Rajpath, Danapur, Anandpuri, Bailey Road, Gardanibagh, Patliputra Colony, Phulwari Sharif, Exhibition Road, Pataliputra, Fraser Road, Kidwaipuri, Gandhi Maidan, S.K. Puri, Anisabad, Boring Canal Road, Bankipore, and Kumhrar.
+
+Signal Strength (dBm): The signal strength represents the received signal power in decibels (dBm) for different network types (3G, 4G, 5G, and LTE).
+
+Signal Quality (%): The signal quality represents the percentage of signal strength relative to the maximum possible signal strength. It is calculated based on the signal strength values and is applicable for 3G, 4G, 5G, and LTE networks. Unfortunately, Signal Quality percentage yielded some error so it's 0.0 in all.
+
+Data Throughput (Mbps): The data throughput represents the network's capacity to transmit data, measured in megabits per second (Mbps). Different network types have varying data throughput values.
+
+Latency (ms): Latency refers to the time delay between the transmission and reception of data packets, measured in milliseconds (ms). Different network types have different latency values, generated using a random uniform distribution within appropriate ranges.
+
+Network Type: The network type indicates the technology used for data transmission, such as 3G, 4G, 5G, or LTE.
+
+BB60C Measurement (dBm): The BB60C measurement represents the signal strength measured using the BB60C spectrum analyzer device. The values are generated based on the signal strength values with added random uniform noise specific to 4G, 5G, and LTE networks.
+
+srsRAN Measurement (dBm): The srsRAN measurement represents the signal strength measured using the srsRAN software-defined radio device.
+
+BladeRFxA9 Measurement (dBm): The BladeRFxA9 measurement represents the signal strength measured using the BladeRFxA9 software-defined radio device.
+
+The dataset is generated with a total of 1926 time periods and covers 20 localities in Bihar. It can be used for various purposes, including network optimization, coverage analysis, and performance evaluation.
+
