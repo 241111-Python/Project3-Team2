@@ -3,6 +3,8 @@ from pathlib import Path
 import subprocess
 import sys
 import keyboard  # For real-time input handling
+import argparse
+
 
 ANALYSES_FILEPATH = './analyses/'
 
@@ -55,6 +57,114 @@ def get_menu_options() -> list[str]:
 
 
 if __name__ == '__main__':
+
+    # CLI Interface
+    parser = argparse.ArgumentParser('Project 3: Team Oak', 
+                                     description="This program allows users to create graphs and correlation maps between several different datasets.")
+    
+    parser.add_argument("--airquality_covid", "-1",
+                        action='store_true',
+                        help=f"Runs analysis comparing air quality to covid rates\n"
+                        )
+    
+    parser.add_argument("--alcohol_schooling", "-2",
+                        action='store_true',
+                    help=f"Runs analysis comparing alcohol use to schooling\n"
+                    )
+    
+    parser.add_argument("--diabetes_stroke", "-3",
+                        action='store_true',
+                    help=f"Runs analysis comparing diabetic symptoms to stroke symptoms\n"
+                    )
+    
+    parser.add_argument("--egg_demoindex", "-4",
+                        action='store_true',
+                        help=f"Runs analysis comparing the price of eggs to the democracy index\n"
+                        )
+    
+    parser.add_argument("--flhealth_banks", "-5",
+                        action='store_true',
+                        help=f"Runs analysis comparing Florida health rankings to the number of failed banks\n"
+                        )
+    
+    parser.add_argument("--maternal_diabetes_alcohol_cardio", "-6",
+                        action='store_true',
+                        help=f"Runs analysis comparing maternal disorders, diabetes, alcohol use disorders, and cardiovascular diseases\n"
+                        )
+    
+    parser.add_argument("--meteorites_causesofdeath", "-7",
+                        action='store_true',
+                        help=f"Runs analysis comparing the number of meteorites landed in countries to the causes of death\n"
+                        )
+    
+    parser.add_argument("--pfizer_demindex", "-8",
+                        action='store_true',
+                        help=f"Runs analysis comparing pfizer stock price to the democracy index\n"
+                        )
+    
+    parser.add_argument("--pfizer_precipitation", "-9",
+                        action='store_true',
+                        help=f"Runs analysis comparing pfizer stock price to precipitation\n"
+                        )
+    
+    parser.add_argument("--powerball_firearm", "-10",
+                        action='store_true',
+                        help=f"Runs analysis comparing the number of even or odd numbers in powerballs to firearm sales\n"
+                        )
+    
+    parser.add_argument("--tb_covid", "-11",
+                        action='store_true',
+                        help=f"Runs analysis comparing tuberculosis to covid\n"
+                        )
+
+    
+    args = parser.parse_args()
+
+    if args.airquality_covid:
+        exec(open(r"analyses\airquality_covid.py").read())
+        quit()
+
+    if args.alcohol_schooling:
+        exec(open(r"analyses\alcohol_schooling.py").read())
+        quit()
+
+    if args.diabetes_stroke:
+        exec(open(r"analyses\diabetes_stroke.py").read())
+        quit()
+
+    if args.egg_demoindex:
+        exec(open(r"analyses\egg_demoindex.py").read())
+        quit()
+
+    if args.flhealth_banks:
+        exec(open(r"analyses\fl-health-rank_failed-banks.py").read())
+        quit()
+
+    if args.maternal_diabetes_alcohol_cardio:
+        exec(open(r"analyses\maternal_diabetes_alcohol_cardio.py").read())
+        quit()
+
+    if args.meteorites_causesofdeath: 
+        exec(open(r"analyses\meteorites_causes-of-death.py").read())
+        quit()  
+
+    if args.pfizer_demindex:     
+        exec(open(r"analyses\pfizer_demindex.py").read())
+        quit()
+
+    if args.pfizer_precipitation:
+        exec(open(r"analyses\pfizer_precipitation.py").read())
+        quit()
+
+    if args.powerball_firearm:
+        exec(open(r"analyses\powerball_firearm.py").read())
+        quit()
+
+    if args.tb_covid:                 
+        exec(open(r"analyses\tb_covid_analysis.py").read()) 
+        quit()   
+    # End of CLI Interface
+
     options_dict = get_menu_options_dict()
     options = get_menu_options()
     # options = ['alcohol_schooling.py', 'diabetes_stroke.py', 'egg_demoindex.py']
