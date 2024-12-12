@@ -34,9 +34,11 @@ df['year'] = df['year'].dt.start_time
 print(df)
 
 plt.figure(figsize=(10, 6))
-plt.plot(df['year'], df['score'], color='orange')
-plt.plot(df['year'], df['Normalized'], color='blue')
+plt.plot(df['year'], df['score'], color='orange', label="Democracy Index")
+plt.plot(df['year'], df['Normalized'], color='blue', label="Normalized Pfizer Stock Price")
 
 plt.xlabel('Year')
-plt.ylabel('Index Score')
+plt.ylabel('Index Value')
+plt.title('Demoracy Index over Time')
+plt.legend()
 plt.savefig("./graphs/pfizer_demindex.png")
