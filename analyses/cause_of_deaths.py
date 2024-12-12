@@ -61,12 +61,11 @@ death_causes_df.rename(columns={
     'Acute_Hepatitis': 'Acute Hep.'
 }, inplace=True)
 
-print(death_causes_df.columns)
+death_causes_df = death_causes_df.drop(columns=['Diabetes', 'CKD', 'Cirrhosis', 'Digestive Dis.', 'PEM', 'Conflict/Terrorism', 'Forces of Nature', 'Drowning', 'Heat/Cold Exposure'])
 
 correlation_matrix = death_causes_df.corr()
 plt.figure(figsize=(18, 16))
 sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="coolwarm", vmin=-1, vmax=1, linewidths=0.5, cbar_kws={"shrink": 0.75})
-plt.title('Correlations of the Causes of Deaths', fontsize=16)
 plt.xticks(rotation=90, ha='right')
 plt.yticks(rotation=0, va='center')
 plt.tight_layout()
