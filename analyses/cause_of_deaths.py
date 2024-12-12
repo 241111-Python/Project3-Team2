@@ -8,7 +8,6 @@ population_df = pd.read_csv("maybeData/world_population.csv")
 deaths_df.columns = deaths_df.columns.str.strip()
 deaths_df.columns = deaths_df.columns.str.replace(' ', '_')
 deaths_df.columns = deaths_df.columns.str.replace('/', '_')
-deaths_df.columns = deaths_df.columns.str.replace("'", "")
 
 df = deaths_df.drop(columns=['Code'])
 df.rename(columns={'Country_Territory': 'Country'}, inplace=True)
@@ -27,6 +26,42 @@ for column in death_causes_df.columns:
     death_causes_df[column] = (death_causes_df[column] / merged_df['Avg_Population']) * 100000
 
 death_causes_df = death_causes_df.drop(columns=['Avg_Population'])
+
+death_causes_df.rename(columns={
+    'Meningitis': 'Meningitis',
+    "Alzheimer's_Disease_and_Other_Dementias": "Alzheimer's",
+    'Parkinson_s_Disease': "Parkinson's",
+    'Nutritional_Deficiencies': 'Nutrition Def.',
+    'Malaria': 'Malaria',
+    'Drowning': 'Drowning',
+    'Interpersonal_Violence': 'Violence',
+    'Maternal_Disorders': 'Maternal',
+    'HIV_AIDS': 'HIV/AIDS',
+    'Drug_Use_Disorders': 'Drug Use',
+    'Tuberculosis': 'TB',
+    'Cardiovascular_Diseases': 'Cardio Diseases',
+    'Lower_Respiratory_Infections': 'LRI',
+    'Neonatal_Disorders': 'Neonatal',
+    'Alcohol_Use_Disorders': 'Alcohol Use',
+    'Self-harm': 'Self-harm',
+    'Exposure_to_Forces_of_Nature': 'Forces of Nature',
+    'Diarrheal_Diseases': 'Diarrhea',
+    'Environmental_Heat_and_Cold_Exposure': 'Heat/Cold Exposure',
+    'Neoplasms': 'Neoplasms',
+    'Conflict_and_Terrorism': 'Conflict/Terrorism',
+    'Diabetes_Mellitus': 'Diabetes',
+    'Chronic_Kidney_Disease': 'CKD',
+    'Poisonings': 'Poisoning',
+    'Protein-Energy_Malnutrition': 'PEM',
+    'Road_Injuries': 'Road Injuries',
+    'Chronic_Respiratory_Diseases': 'Chronic Resp.',
+    'Cirrhosis_and_Other_Chronic_Liver_Diseases': 'Cirrhosis',
+    'Digestive_Diseases': 'Digestive Dis.',
+    'Fire,_Heat,_and_Hot_Substances': 'Fire/Heat',
+    'Acute_Hepatitis': 'Acute Hep.'
+}, inplace=True)
+
+print(death_causes_df.columns)
 
 correlation_matrix = death_causes_df.corr()
 plt.figure(figsize=(18, 16))
