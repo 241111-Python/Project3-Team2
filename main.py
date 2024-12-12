@@ -84,18 +84,26 @@ if __name__ == '__main__':
     
     parser.add_argument("--tb_covid", "-11", action='store_true', help=f"Runs analysis comparing tuberculosis to covid\n")
 
+    parser.add_argument("--boxOffice_rating", "-12", action='store_true', help=f"Runs analysis comparing box office data to movie ratings\n" )
     
+    parser.add_argument("--cellular_NEO", "-13", action='store_true', help=f"Runs analysis comparing Near Earth Objects to cellular data\n")
+    
+    parser.add_argument("--globalHealth_NEO", "-14", action='store_true', help=f"Runs analysis comparing Near Earth Objects to global health data\n")
+
+    parser.add_argument("--movies_NEO", "-15", action='store_true', help=f"Runs analysis comparing Near Earth Objects to movie ratings\n")
+
     args = parser.parse_args()
 
-    arg_dict = {airquality_covid:"airquality_covid.py", alcohol_schooling:"alcohol_schooling.py",
-                diabetes_stroke:"diabetes_stroke.py", egg_demoindex:"egg_demoindex.py",
-                flhealth_banks:"fl-health-rank_failed-banks.py", maternal_diabetes_alcohol_cardio:"maternal_diabetes_alcohol_cardio.py",
-                meteorites_causesofdeath:"meteorites_causes-of-death.py", pfizer_demindex:"pfizer_demindex.py",
-                pfizer_precipitation:"pfizer_precipitation.py",powerball_firearm:"powerball_firearm.py",
-                tb_covid:"tb_covid_analysis.py"}
+    arg_dict = {args.airquality_covid:"airquality_covid.py", args.alcohol_schooling:"alcohol_schooling.py",
+                args.diabetes_stroke:"diabetes_stroke.py", args.egg_demoindex:"egg_demoindex.py",
+                args.flhealth_banks:"fl-health-rank_failed-banks.py", args.maternal_diabetes_alcohol_cardio:"maternal_diabetes_alcohol_cardio.py",
+                args.meteorites_causesofdeath:"meteorites_causes-of-death.py", args.pfizer_demindex:"pfizer_demindex.py",
+                args.pfizer_precipitation:"pfizer_precipitation.py",args.powerball_firearm:"powerball_firearm.py",
+                args.tb_covid:"tb_covid_analysis.py", args.boxOffice_rating:"boxOffice_Rating.py", args.cellular_NEO: "cellular_NEO.py", 
+                args.globalHealth_NEO:"globalHealth_NEO.py", args.movies_NEO:"movies_NEO.py"}
 
     for arg in arg_dict:
-        if args.arg:
+        if arg:
             exec(open(os.path.join('analyses', arg_dict[arg])).read())
             quit()
 # End of CLI Interface
