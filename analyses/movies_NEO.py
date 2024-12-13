@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+
 
 PATH1 = r'C:\Revature\Project3-Team2\maybeData\NASA_Close_Approach_Data_1960_2060.csv'
 PATH2 = r'C:\Revature\Project3-Team2\maybeData\imdb_top_1000.csv'
@@ -61,6 +64,18 @@ merged_data = pd.merge(nasa_agg, imdb_agg, left_on='Year', right_on='Released_Ye
 
 print(merged_data)
 
+
+# normalizing and standardizing data 
+scaler = MinMaxScaler()
+numeric_columns = merged_data.select_dtypes(include='number').columns
+merged_data[numeric_columns] = scaler.fit_transform(merged_data[numeric_columns])
+
+scaler = StandardScaler()
+numeric_columns = merged_data.select_dtypes(include='number').columns
+merged_data[numeric_columns] = scaler.fit_transform(merged_data[numeric_columns])
+
+
+
 plt.figure(figsize=(10, 8))
 sns.heatmap(merged_data.corr(), annot=True, fmt='.2f')
 plt.title('Correlation Heatmap')
@@ -74,7 +89,7 @@ fig, ax1 = plt.subplots(figsize=(12, 6))
 
 # Plot v_rel on the primary y-axis
 ax1.set_xlabel('Year')
-ax1.set_ylabel('Nominal Distance between NEO and Earth', color='tab:blue')
+ax1.set_ylabel('Maximum Distance between NEO and Earth', color='tab:blue')
 ax1.plot(merged_data['Year'], merged_data['dist'], color='tab:blue', label='dist')
 ax1.tick_params(axis='y', labelcolor='tab:blue')
 
@@ -85,7 +100,7 @@ ax2.plot(merged_data['Year'], merged_data['Gross'], color='tab:red', label='Gros
 ax2.tick_params(axis='y', labelcolor='tab:red')
 
 # Add title and grid
-plt.title('NEO Nominal Distance and Movie Gross over the Years')
+plt.title('NEO Maximum Distance and Movie Gross over the Years')
 fig.tight_layout()
 plt.grid(True)
 plt.show()
